@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>My Static Webpage</title>
+    <script>
+        let currentLine = 0;
+        const lines = [
+            "This is line 1",
+            "This is line 2",
+            "This is line 3",
+            "This is line 4"
+        ];
+
+        function showNextLine() {
+            if (currentLine < lines.length) {
+                document.getElementById('textDisplay').textContent = lines[currentLine];
+                currentLine++;
+            }
+        }
+
+        function handleSubmit() {
+            const userInput = document.getElementById('userInput').value;
+            if (userInput.trim() !== '') {
+                lines.push(userInput);
+                document.getElementById('userInput').value = '';
+                alert('Text added successfully!');
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Welcome to My Website!</h1>
-    <p>This is a simple static page hosted on my GoDaddy domain.</p>
+    
+    <!-- Text display area -->
+    <p id="textDisplay">Click 'Next' to start</p>
+    
+    <!-- Next button -->
+    <button onclick="showNextLine()">Next</button>
+    
+    <!-- User input section -->
+    <div style="margin-top: 20px;">
+        <input type="text" id="userInput" placeholder="Enter your text here">
+        <button onclick="handleSubmit()">Submit</button>
+    </div>
 </body>
 </html>
